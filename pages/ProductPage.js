@@ -2,6 +2,8 @@ const Page = require("./Page");
 
 const logger = require("../logger");
 
+const { LOADING_TIMEOUT } = require("../config/constants");
+
 class ProductPage extends Page {
   static addToCartXpath = `//*[@class='product-info-add-to-cart']`;
   static deleteFromTheCartXpath = `//*[@class='modal__cart-product-remove']`;
@@ -22,13 +24,15 @@ class ProductPage extends Page {
   async addItemToCart() {
     logger.info("Adding item to the cart.");
     await this.clickByXpath(ProductPage.addToCartXpath);
-    
+    super.waitPageLoad(LOADING_TIMEOUT);
+
     return this;
   }
 
   async deleteItemFromTheCart() {
     logger.info("Deleting item from the cart.");
     await this.clickByXpath(ProductPage.deleteFromTheCartXpath);
+    super.waitPageLoad(LOADING_TIMEOUT);
     
     return this;
   }

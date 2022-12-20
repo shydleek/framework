@@ -6,11 +6,18 @@ const DataReader = require("../services/DataReaderService");
 const ProductPage = require("../pages/ProductPage");
 const Product = require("../models/Product");
 
+const { TEST_TIMEOUT } = require("../config/constants");
+
 describe("Adding and deleting items from cart.", function () {
   before(async function () {
-    const props = await DataReader.getTestData("product.properties");
-    for (const key in props) {
-        this[key] = props[key];
+    const productProps = await DataReader.getTestData("product.properties");
+    for (const key in productProps) {
+        this[key] = productProps[key];
+    }
+
+    const cartProps = await DataReader.getTestData("cart.properties");
+    for (const key in cartProps) {
+        this[key] = cartProps[key];
     }
   });
 
@@ -35,19 +42,20 @@ describe("Adding and deleting items from cart.", function () {
 
     const isProductSelectedSize = await productPage.getProductSelectedSize() ? true : false;
     expect(isProductSelectedSize).to.be.true;
-  }).timeout(50000);
+  }).timeout(TEST_TIMEOUT);
 
-  // it("Should delete item from the cart.", async function () {
-  //   const vyshyvankaCrossPage = new ProductPage(this.driver);
-  //   await vyshyvankaCrossPage.openPage(pageUrl);
-  //   await vyshyvankaCrossPage.waitPageLoad(5000);
-  //   await vyshyvankaCrossPage.selectSize('M');
-  //   await vyshyvankaCrossPage.addItemToCart();
-  //   await vyshyvankaCrossPage.deleteItemFromTheCart();
-  //   await vyshyvankaCrossPage.waitPageLoad(1000);
-  //   const totalPrice = await vyshyvankaCrossPage.getTotalPrice();
-  //   expect(totalPrice).to.be.equal(expectedTotalPrice);
-  // }).timeout(50000);
+  it("Should delete item from the cart.", async function () {
+    const product = new Product(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
+
+    const productPage = new ProductPage(this.driver, product);
+    await productPage.openPage();
+    await productPage.selectSize();
+    await productPage.addItemToCart();
+    await productPage.deleteItemFromTheCart();
+
+    const totalPrice = await productPage.getTotalPrice();
+    expect(totalPrice).to.be.equal(this.defaultTotalPrice);
+  }).timeout(TEST_TIMEOUT);
 
   afterEach(async function () {
     await Driver.killDriver();
