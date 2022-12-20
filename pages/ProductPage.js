@@ -5,6 +5,10 @@ const logger = require("../logger");
 class ProductPage extends Page {
   static addToCartXpath = `//*[@class='product-info-add-to-cart']`;
   static deleteFromTheCartXpath = `//*[@class='modal__cart-product-remove']`;
+  static productNameXpath = `//*[@class='modal__cart-product-name hoverable']`;
+  static productPriceXpath = `//*[@class='modal__cart-product-price-actual']`;
+  static productSelectedSize = `//button[@type='button' and @active='true']`;
+  static productTotalPrice = `//*[@class='modal__cart-total-cost-value']`;
 
   constructor(driver, product) {
     super(driver);
@@ -37,45 +41,41 @@ class ProductPage extends Page {
     return this;
   }
 
-  // async getProductName() {
-  //   logger.info(`Getting product name.`);
+  async getProductName() {
+    logger.info(`Getting product name.`);
 
-  //   const xpath = `//*[@class='modal__cart-product-name hoverable']`;
-  //   const productNameElement = await this.findByXpath(xpath);
-  //   const productName = await productNameElement.getText();
+    const productNameElement = await this.findByXpath(ProductPage.productNameXpath);
+    const productName = await productNameElement.getText();
 
-  //   return productName;
-  // }
+    return productName;
+  }
 
-  // async getProductPrice() {
-  //   logger.info(`Getting product price.`);
+  async getProductPrice() {
+    logger.info(`Getting product price.`);
 
-  //   const xpath = `//*[@class='modal__cart-product-price-actual']`;
-  //   const productPriceElement = await this.findByXpath(xpath);
-  //   const productPrice = await productPriceElement.getText();
+    const productPriceElement = await this.findByXpath(ProductPage.productPriceXpath);
+    const productPrice = await productPriceElement.getText();
 
-  //   return productPrice;
-  // }
+    return productPrice;
+  }
 
-  // async getProductSelectedSize() {
-  //   logger.info(`Getting selected product size.`);
+  async getProductSelectedSize() {
+    logger.info(`Getting selected product size.`);
 
-  //   const xpath = `//button[@type='button' and @active='true']`;
-  //   const productSizeElement = await this.findByXpath(xpath);
-  //   const productSize = await productSizeElement.getText();
+    const productSizeElement = await this.findByXpath(ProductPage.productSelectedSize);
+    const productSize = await productSizeElement.getText();
 
-  //   return productSize;
-  // }
+    return productSize;
+  }
 
-  // async getTotalPrice() {
-  //   logger.info(`Getting total price of cart.`);
+  async getTotalPrice() {
+    logger.info(`Getting total price of cart.`);
 
-  //   const xpath = `//*[@class='modal__cart-total-cost-value']`;
-  //   const totalPriceElement = await this.findByXpath(xpath);
-  //   const totalPrice = await totalPriceElement.getText();
+    const totalPriceElement = await this.findByXpath(ProductPage.productTotalPrice);
+    const totalPrice = await totalPriceElement.getText();
 
-  //   return totalPrice;
-  // }
+    return totalPrice;
+  }
 }
 
 module.exports = ProductPage;

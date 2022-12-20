@@ -19,21 +19,22 @@ describe("Adding and deleting items from cart.", function () {
   });
 
   it("Should add exact product to the cart.", async function () {
-    console.log(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
+    //console.log(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
     const product = new Product(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
+
     const productPage = new ProductPage(this.driver, product);
     await productPage.openPage();
     await productPage.selectSize();
     await productPage.addItemToCart();
-    // const productName = await vyshyvankaCrossPage.getProductName();
-    // expect(productName).to.be.equal(this.productName);
-    // await vyshyvankaCrossPage.waitPageLoad(1000);
-    // const productPrice = await vyshyvankaCrossPage.getProductPrice();
-    // expect(productPrice).to.be.equal(this.productPrice);
-    // await vyshyvankaCrossPage.waitPageLoad(1000);
-    // const isProductSelectedSize = await vyshyvankaCrossPage.getProductSelectedSize() ? true : false;
-    // expect(isProductSelectedSize).to.be.true;
-    expect(true).to.be.true;
+
+    const productName = await productPage.getProductName();
+    expect(productName).to.be.equal(this.productName);
+
+    const productPrice = await productPage.getProductPrice();
+    expect(productPrice).to.be.equal(this.productPrice);
+
+    const isProductSelectedSize = await productPage.getProductSelectedSize() ? true : false;
+    expect(isProductSelectedSize).to.be.true;
   }).timeout(50000);
 
   // it("Should delete item from the cart.", async function () {
