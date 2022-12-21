@@ -21,10 +21,14 @@ class ProductPage extends Page {
     return super.openPage(this.product.getPageUrl());
   }
 
+  async waitPageLoad() {
+    return super.waitPageLoad(LOADING_TIMEOUT);
+  }
+
   async addItemToCart() {
     logger.info("Adding item to the cart.");
     await this.clickByXpath(ProductPage.addToCartXpath);
-    super.waitPageLoad(LOADING_TIMEOUT);
+    this.waitPageLoad(LOADING_TIMEOUT);
 
     return this;
   }
@@ -32,7 +36,7 @@ class ProductPage extends Page {
   async deleteItemFromTheCart() {
     logger.info("Deleting item from the cart.");
     await this.clickByXpath(ProductPage.deleteFromTheCartXpath);
-    super.waitPageLoad(LOADING_TIMEOUT);
+    this.waitPageLoad(LOADING_TIMEOUT);
     
     return this;
   }

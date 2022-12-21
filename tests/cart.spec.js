@@ -42,6 +42,8 @@ describe("Adding and deleting items from cart.", function () {
 
     const isProductSelectedSize = await productPage.getProductSelectedSize() ? true : false;
     expect(isProductSelectedSize).to.be.true;
+
+    //expect(1).to.be.equal(0);
   }).timeout(TEST_TIMEOUT);
 
   it("Should delete item from the cart.", async function () {
@@ -58,6 +60,15 @@ describe("Adding and deleting items from cart.", function () {
   }).timeout(TEST_TIMEOUT);
 
   afterEach(async function () {
+    if (this.currentTest.state !== "passed") {
+      const image = await this.driver.takeScreenshot();
+      await require('fs').writeFile(
+          './screenshots/cartFail.png',
+          image,
+          'base64',
+          (err) => {});
+    }
+
     await Driver.killDriver();
   });
 });
