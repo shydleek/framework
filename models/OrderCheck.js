@@ -1,5 +1,5 @@
 class OrderCheck {
-    constructor(number, password) {
+    constructor(number, password, message) {
         this.number = number;
         this.password = password;
         this.message = message;

@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="26.586" tests="2" failures="1">
-  <testsuite name="Root Suite" timestamp="2022-12-21T21:06:36" tests="0" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="14.813" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-12-21T23:22:18" tests="0" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="Adding and deleting items from cart." timestamp="2022-12-21T21:06:36" tests="2" file="D:\framework\tests\cart.spec.js" time="26.585" failures="1">
-    <testcase name="Adding and deleting items from cart. Should add exact product to the cart." time="5.404" classname="Should add exact product to the cart.">
-      <failure message="expected &apos;56.13 EUR&apos; to equal &apos;56.07 EUR&apos;" type="AssertionError"><![CDATA[AssertionError: expected '56.13 EUR' to equal '56.07 EUR'
-    at Context.<anonymous> (tests\cart.spec.js:41:32)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-
-      + expected - actual
-
-      -56.13 EUR
-      +56.07 EUR
-      ]]></failure>
-    </testcase>
-    <testcase name="Adding and deleting items from cart. Should delete item from the cart." time="4.123" classname="Should delete item from the cart.">
+  <testsuite name="Checking not existing order." timestamp="2022-12-21T23:22:18" tests="1" file="D:\framework\tests\orderCheck.spec.js" time="14.812" failures="0">
+    <testcase name="Checking not existing order. Should give back not correct password modal." time="5.859" classname="Should give back not correct password modal.">
     </testcase>
   </testsuite>
 </testsuites>

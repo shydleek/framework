@@ -27,14 +27,11 @@ describe("Checking not existing order.", function () {
     const homePage = new HomePage(this.driver, order);
     await homePage.loadProperties();
     await homePage.openPage();
-    //await basePage.waitPageLoad(1000);
     await homePage.clickYourOrder(); // сделать это
-    //await basePage.waitPageLoad(1000);
     await homePage.fillData(); // сделать это
-    const textMessage = await homePage.isTextMessage();
+    const orderCheckError = await homePage.isOrderCheckError();
 
-    expect(textMessage).to.be.true;
-    //expect(1).to.be.equal(0);
+    expect(orderCheckError).to.be.true;
   }).timeout(TEST_TIMEOUT);
 
   afterEach(async function () {

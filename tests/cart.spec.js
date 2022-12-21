@@ -26,7 +26,6 @@ describe("Adding and deleting items from cart.", function () {
   });
 
   it("Should add exact product to the cart.", async function () {
-    //console.log(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
     const product = new Product(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
 
     const productPage = new ProductPage(this.driver, product);
@@ -42,8 +41,6 @@ describe("Adding and deleting items from cart.", function () {
 
     const isProductSelectedSize = await productPage.getProductSelectedSize() ? true : false;
     expect(isProductSelectedSize).to.be.true;
-
-    //expect(1).to.be.equal(0);
   }).timeout(TEST_TIMEOUT);
 
   it("Should delete item from the cart.", async function () {
