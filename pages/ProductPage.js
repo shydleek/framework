@@ -21,14 +21,14 @@ class ProductPage extends Page {
     return super.openPage(this.product.getPageUrl());
   }
 
-  async waitPageLoad() {
-    return super.waitPageLoad(LOADING_TIMEOUT);
+  async waitingLoad() {
+    return super.waitingLoad(LOADING_TIMEOUT);
   }
 
   async addItemToCart() {
     logger.info("Adding item to the cart.");
     await this.clickByXpath(ProductPage.addToCartXpath);
-    this.waitPageLoad(LOADING_TIMEOUT);
+    await this.waitPageLoad(LOADING_TIMEOUT);
 
     return this;
   }
@@ -36,7 +36,7 @@ class ProductPage extends Page {
   async deleteItemFromTheCart() {
     logger.info("Deleting item from the cart.");
     await this.clickByXpath(ProductPage.deleteFromTheCartXpath);
-    this.waitPageLoad(LOADING_TIMEOUT);
+    await this.waitPageLoad(LOADING_TIMEOUT);
     
     return this;
   }
@@ -80,6 +80,7 @@ class ProductPage extends Page {
     logger.info(`Getting total price of cart.`);
 
     const totalPriceElement = await this.findByXpath(ProductPage.productTotalPrice);
+    await this.waitPageLoad(LOADING_TIMEOUT);
     const totalPrice = await totalPriceElement.getText();
 
     return totalPrice;

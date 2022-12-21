@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/cart.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000 --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-results.xml",
+    "test": "mocha tests/cart.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000",
     "remote-test": "mocha tests/cart.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000"
   },
   "author": "",

@@ -2,6 +2,8 @@ const { By, until } = require("selenium-webdriver");
 
 const logger = require("../logger");
 
+const { LOADING_TIMEOUT } = require("../config/constants");
+
 class Page {
   constructor(driver) {
     this.driver = driver;
@@ -10,6 +12,7 @@ class Page {
   async openPage(url) {
     logger.info(`Opening page with url: ${url}.`);
     await this.driver.get(url);
+    await this.waitingLoad(LOADING_TIMEOUT);
 
     return this;
   }
@@ -31,7 +34,7 @@ class Page {
     return this;
   }
 
-  async waitPageLoad(time){
+  async waitingLoad(time){
     logger.info("Waiting for page load.");
     await this.driver.sleep(time);
 
