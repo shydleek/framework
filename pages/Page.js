@@ -2,7 +2,7 @@ const { By, until } = require("selenium-webdriver");
 const logger = require("../logger");
 const DataReader = require("../services/DataReaderService");
 
-const { LOADING_TIME, LOADING_TIMEOUT } = require("../config/constants");
+const { LOADING_TIME, LOADING_TIMEOUT, LANGUAGE } = require("../config/constants");
 
 class Page {
   static languageXpath = `//*[@class='select-input-content']`;
@@ -12,13 +12,17 @@ class Page {
   }
 
   async changeLanguage(language) {
-    logger.info(`Changing default language.`);
+    if (language === LANGUAGE) {
+      logger.info(`Changing default language.`);
 
-    await this.waitingLoad();
-    const element = await this.findByXpath(Page.languageXpath);
-    await element.click();
-    const select = await this.findByXpath(`//*[contains(text(), '${language}')]`);
-    await select.click();
+
+      await this.waitingLoad();
+      const element = await this.findByXpath(Page.languageXpath);
+      await element.click();
+      
+      const select = await this.findByXpath(`//*[contains(text(), '${language}')]`);
+      await select.click();
+    }
 
     return this;
   }
