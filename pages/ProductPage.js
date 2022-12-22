@@ -27,6 +27,7 @@ class ProductPage extends Page {
 
   async addItemToCart() {
     logger.info("Adding item to the cart.");
+
     await this.clickByXpath(ProductPage.addToCartXpath);
     await this.waitingLoad(LOADING_TIMEOUT);
 
@@ -35,6 +36,7 @@ class ProductPage extends Page {
 
   async deleteItemFromTheCart() {
     logger.info("Deleting item from the cart.");
+
     await this.clickByXpath(ProductPage.deleteFromTheCartXpath);
     await this.waitingLoad(LOADING_TIMEOUT);
     
@@ -43,6 +45,7 @@ class ProductPage extends Page {
 
   async selectSize() {
     logger.info(`Selecting size: ${this.product.getSize()}.`);
+    
     const selectSizeXpath = `//button[contains(text(), '${this.product.getSize()}')]`;
     await this.clickByXpath(selectSizeXpath);
     

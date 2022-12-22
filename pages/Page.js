@@ -11,6 +11,7 @@ class Page {
 
   async openPage(url) {
     logger.info(`Opening ${url} page.`);
+
     await this.driver.get(url);
     await this.waitingLoad(LOADING_TIMEOUT);
 
@@ -27,21 +28,25 @@ class Page {
 
   async getItemText(item){
     logger.info("Getting the item text.");
+
     return await item.getText();
   }
 
   async findByXpath(xpath) {
-    // log
-    return this.driver.wait(until.elementLocated(By.xpath(xpath)), LOADING_TIME)
+    logger.info(`Finding by Xpath.`);
+
+    return this.driver.wait(until.elementLocated(By.xpath(xpath)), LOADING_TIME);
   }
 
   async findAllByXpath(xpath) {
-    // log
+    logger.info(`Finding all by Xpath.`);
+
     return this.driver.wait(until.elementsLocated(By.xpath(xpath)), LOADING_TIME);
   }
 
   async clickByXpath(xpath) {
-    // log
+    logger.info(`Clicking by Xpath.`);
+
     const element = await this.findByXpath(xpath);
     await element.click();
 
@@ -49,7 +54,8 @@ class Page {
   }
 
   async loadProperties(fileName) {
-    // log
+    logger.info(`Loading properties from ${fileName}.`);
+
     const props = await DataReader.getTestData(`${fileName}`);
 
     for (const key in props) {
@@ -61,6 +67,7 @@ class Page {
 
   async waitingLoad(time){
     logger.info(`Waiting for page load. (${time} ms)`);
+    
     await this.driver.sleep(time);
 
     return this;

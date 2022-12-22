@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="17.723" tests="1" failures="1">
+  <testsuite name="Root Suite" timestamp="2022-12-22T01:22:02" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Editing and applying user personal data." timestamp="2022-12-22T01:22:02" tests="1" file="D:\framework\tests\user.spec.js" time="17.722" failures="1">
+    <testcase name="Editing and applying user personal data. Should apply change of personal data." time="6.607" classname="Should apply change of personal data.">
+      <failure message="profileXpath is not defined" type="ReferenceError"><![CDATA[ReferenceError: profileXpath is not defined
+    at AccountPage.clickToProfile (pages\AccountPage.js:44:44)
+    at async Context.<anonymous> (tests\user.spec.js:29:5)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
