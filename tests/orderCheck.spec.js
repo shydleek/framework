@@ -26,6 +26,7 @@ describe("Checking not existing order.", function () {
     const homePage = new HomePage(this.driver, order);
     await homePage.loadProperties();
     await homePage.openPage();
+    await homePage.changeLanguage();
     await homePage.clickYourOrder();
     await homePage.fillData();
 

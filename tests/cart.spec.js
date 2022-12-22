@@ -29,7 +29,9 @@ describe("Adding and deleting items from cart.", function () {
     const product = new Product(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
 
     const productPage = new ProductPage(this.driver, product);
+    await productPage.loadProperties();
     await productPage.openPage();
+    await productPage.changeLanguage();
     await productPage.selectSize();
     await productPage.addItemToCart();
 
@@ -47,7 +49,9 @@ describe("Adding and deleting items from cart.", function () {
     const product = new Product(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
 
     const productPage = new ProductPage(this.driver, product);
+    await productPage.loadProperties();
     await productPage.openPage();
+    await productPage.changeLanguage();
     await productPage.selectSize();
     await productPage.addItemToCart();
     await productPage.deleteItemFromTheCart();

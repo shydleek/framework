@@ -5,6 +5,7 @@ const logger = require("../logger");
 const { LOADING_TIMEOUT } = require("../config/constants");
 
 class ProductPage extends Page {
+  static resourcesFileName = "product.properties";
   static addToCartXpath = `//*[@class='product-info-add-to-cart']`;
   static deleteFromTheCartXpath = `//*[@class='modal__cart-product-remove']`;
   static productNameXpath = `//*[@class='modal__cart-product-name hoverable']`;
@@ -17,8 +18,16 @@ class ProductPage extends Page {
     this.product = product;
   }
 
+  async changeLanguage() {
+    return super.changeLanguage(this.defaultLanguage);
+  }
+
   async openPage() {
     return super.openPage(this.product.getPageUrl());
+  }
+
+  async loadProperties() {
+    return super.loadProperties(ProductPage.resourcesFileName);
   }
 
   async waitingLoad() {

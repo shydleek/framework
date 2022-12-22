@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="17.264" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-12-22T10:50:53" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Checking not existing order." timestamp="2022-12-22T10:50:53" tests="1" file="D:\framework\tests\orderCheck.spec.js" time="17.262" failures="0">
+    <testcase name="Checking not existing order. Should give back not correct password modal." time="8.866" classname="Should give back not correct password modal.">
+    </testcase>
+  </testsuite>
+</testsuites>

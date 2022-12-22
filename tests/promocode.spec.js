@@ -26,6 +26,7 @@ describe("Checking not existing promocode.", function () {
     const homePage = new HomePage(this.driver, promocode);
     await homePage.loadProperties();
     await homePage.openPage();
+    await homePage.changeLanguage();
     await homePage.clickToCart();
     await homePage.fillPromocode();
     

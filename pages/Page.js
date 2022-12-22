@@ -5,8 +5,22 @@ const DataReader = require("../services/DataReaderService");
 const { LOADING_TIME, LOADING_TIMEOUT } = require("../config/constants");
 
 class Page {
+  static languageXpath = `//*[@class='select-input-content']`;
+
   constructor(driver) {
     this.driver = driver;
+  }
+
+  async changeLanguage(language) {
+    logger.info(`Changing default language.`);
+
+    await this.waitingLoad();
+    const element = await this.findByXpath(Page.languageXpath);
+    await element.click();
+    const select = await this.findByXpath(`//*[contains(text(), '${language}')]`);
+    await select.click();
+
+    return this;
   }
 
   async openPage(url) {

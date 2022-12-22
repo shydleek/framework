@@ -18,6 +18,10 @@ class HomePage extends Page {
     this.props = props;
   }
 
+  async changeLanguage() {
+    return super.changeLanguage(this.defaultLanguage);
+  }
+
   async openPage() {
     return super.openPage(this.homeUrl);
   }

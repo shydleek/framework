@@ -1,8 +1,8 @@
 class User {
-    constructor(name, surname, patronic, mail, password, phoneNumber) {
+    constructor(name, surname, patronymic, mail, password, phoneNumber) {
         this.name = name;
         this.surname = surname;
-        this.patronic = patronic;
+        this.patronymic = patronymic;
         this.mail = mail;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -24,12 +24,12 @@ class User {
         this.surname = surname;
     }
 
-    getPatronic() {
-        return this.patronic;
+    getPatronymic() {
+        return this.patronymic;
     }
 
-    setPatronic(patronic) {
-        this.patronic = patronic;
+    setPatronymic(patronymic) {
+        this.patronymic = patronymic;
     }
 
     getMail() {

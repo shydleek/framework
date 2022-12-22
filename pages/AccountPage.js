@@ -7,22 +7,25 @@ const { LOADING_TIMEOUT } = require("../config/constants");
 
 class AccountPage extends Page {
   static resourcesFileName = "user.properties";
+  static languageXpath = `//*[@class='select-input-content']`;
   static profileXpath = `//*[@class='icon header-account-icon icon__animated']`;
   static mailSignInputXpath = `//*[@id='signin-email']`;
   static passwordSignInputXpath = `//*[@id='signin-password']`;
   static applySignXpath = `//*[@class='modal__signin-classic-signIn hoverable']`;
   static changePersonalDataXpath = `//*[@class='account__details-personal-data-change hoverable']`;
   static applyPersonalDataXpath = `//*[@class='account__details-personal-data-save-changes hoverable']`;
-//   static changePersonalDataXpath = `//*[@class='account__details-personal-data-change hoverable']`; delivery
-//   static changePersonalDataXpath = `//*[@class='account__details-personal-data-change hoverable']`; password
   static userNameXpath = `//*[@name='first_name']`;
   static userSurnameXpath = `//*[@name='last_name']`;
-  static userPatronicXpath = `//*[@name='middle_name']`;
+  static userPatronymicXpath = `//*[@name='middle_name']`;
   static userPhoneNumberXpath = `//*[@class='form-control booking-page__details-form-item-input']`;
 
   constructor(driver, props) {
     super(driver);
     this.props = props;
+  }
+
+  async changeLanguage() {
+    return super.changeLanguage(this.defaultLanguage);
   }
 
   async openPage() {
@@ -36,7 +39,7 @@ class AccountPage extends Page {
   async waitingLoad() {
     return super.waitingLoad(LOADING_TIMEOUT);
   }
-  
+
   async clickToProfile() {
     logger.info(`Clicking profile button.`);
 
@@ -79,62 +82,55 @@ class AccountPage extends Page {
     return this;
   }
 
-//   async clickChangeDeliveryAddress() {
-//     logger.info(`Clicking "Change" button in delivery address.`);
-//     await this.waitingLoad();
-//     const element = await this.findByXpath(`//*[@class='account__details-delivery-change']`); // вывести в статик икспас
-//     await element.click();
-
-//     return this;
-//   }
-
-//   async clickChangePassword() {
-//     logger.info(`Clicking "Change" button in password.`);
-//     await this.waitingLoad();
-//     const element = await this.findByXpath(`//*[@class='account__details-reset-password-change']`); // вывести в статик икспас
-//     await element.click();
-
-//     return this;
-//   }
-
   async fillPersonalData() {
     logger.info(`Filling data into personal data.`);
 
     const userName = await this.findByXpath(AccountPage.userNameXpath);
+    await userName.sendKeys(Key.CONTROL + "a");
+    await userName.sendKeys(Key.DELETE);
     await userName.sendKeys(this.props.name);
     await this.waitingLoad();
     const userSurname = await this.findByXpath(AccountPage.userSurnameXpath);
+    await userSurname.sendKeys(Key.CONTROL + "a");
+    await userSurname.sendKeys(Key.DELETE);
     await userSurname.sendKeys(this.props.surname);
     await this.waitingLoad();
-    const userPatronic = await this.findByXpath(AccountPage.userPatronicXpath); 
-    await userPatronic.sendKeys(this.props.patronic);
+    const userPatronymic = await this.findByXpath(AccountPage.userPatronymicXpath); 
+    await userPatronymic.sendKeys(Key.CONTROL + "a");
+    await userPatronymic.sendKeys(Key.DELETE);
+    await userPatronymic.sendKeys(this.props.patronymic);
     await this.waitingLoad();
     const userPhoneNumber = await this.findByXpath(AccountPage.userPhoneNumberXpath); 
+    await userPhoneNumber.sendKeys(Key.CONTROL + "a");
+    await userPhoneNumber.sendKeys(Key.DELETE);
     await userPhoneNumber.sendKeys(this.props.phoneNumber);
     await this.waitingLoad();
 
     return this;
   }
 
-//   async fillDeliveryAddress() {
-//     logger.info(`Filling data into delivery address.`);
-//     const orderNumber = await this.findByXpath(`//*[@id='modal-status-number']`); // вывести в статик икспас
-//     await orderNumber.sendKeys(this.props.number);
-//     const orderPassword = await this.findByXpath(`//*[@id='modal-status-secret']`); // вывести в статик икспас
-//     await orderPassword.sendKeys(this.props.password, Key.ENTER);
+  async clearPersonalData() {
+    logger.info(`Clearing personal data.`);
 
-//     return this;
-//   }
+    const userName = await this.findByXpath(AccountPage.userNameXpath);
+    await userName.sendKeys(Key.CONTROL + "a");
+    await userName.sendKeys(Key.DELETE);
+    await this.waitingLoad();
+    const userSurname = await this.findByXpath(AccountPage.userSurnameXpath);
+    await userSurname.sendKeys(Key.CONTROL + "a");
+    await userSurname.sendKeys(Key.DELETE);
+    await this.waitingLoad();
+    const userPatronymic = await this.findByXpath(AccountPage.userPatronymicXpath); 
+    await userPatronymic.sendKeys(Key.CONTROL + "a");
+    await userPatronymic.sendKeys(Key.DELETE);
+    await this.waitingLoad();
+    const userPhoneNumber = await this.findByXpath(AccountPage.userPhoneNumberXpath); 
+    await userPhoneNumber.sendKeys(Key.CONTROL + "a");
+    await userPhoneNumber.sendKeys(Key.DELETE);
+    await this.waitingLoad();
 
-//   async fillNewPassword() {
-//     logger.info(`Filling new password.`);
-//     const orderNumber = await this.findByXpath(`//*[@id='modal-status-number']`); // вывести в статик икспас
-//     await orderNumber.sendKeys(this.props.number);
-//     const orderPassword = await this.findByXpath(`//*[@id='modal-status-secret']`); // вывести в статик икспас
-//     await orderPassword.sendKeys(this.props.password, Key.ENTER);
-
-//     return this;
-//   }
+    return this;
+  }
 
   async applyPersonalData() {
     logger.info(`Applying data into personal data.`);
@@ -145,18 +141,18 @@ class AccountPage extends Page {
     return this;
   }
 
-//   async applyDeliveryAddress() {
-//     logger.info(`Applying data into delivery address.`);
-//   }
-
-//   async applyNewPassword() {
-//     logger.info(`Applying new password.`);
-//   }
-
-  async isUserApplied() {
+  async isUserApplied(message) {
     logger.info(`Checking if the user is applied.`);
 
-    const textMessageElement = await this.findByXpath(`//p[contains(text(), '${this.userCorrectMessage}')]`);
+    const textMessageElement = await this.findByXpath(`//p[contains(text(), '${message}')]`);
+
+    return textMessageElement ? true : false;
+  }
+  
+  async isUserSignInError() {
+    logger.info(`Checking if the user is not signed in.`);
+
+    const textMessageElement = await this.findByXpath(`//p[contains(text(), '${this.userSignInMessage}')]`);
 
     return textMessageElement ? true : false;
   }

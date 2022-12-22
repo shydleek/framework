@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="14.321" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-12-22T10:51:24" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Checking not existing promocode." timestamp="2022-12-22T10:51:24" tests="1" file="D:\framework\tests\promocode.spec.js" time="14.320" failures="0">
+    <testcase name="Checking not existing promocode. Should get promocode error." time="7.529" classname="Should get promocode error.">
+    </testcase>
+  </testsuite>
+</testsuites>
