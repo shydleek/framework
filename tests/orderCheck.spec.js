@@ -21,16 +21,15 @@ describe("Checking not existing order.", function () {
   });
 
   it("Should give back not correct password modal.", async function () {
-    //console.log(this.productName, this.productPrice, this.productId, this.productSize, this.productUrl);
     const order = new OrderCheck(this.orderNumber, this.orderPassword, this.orderMessage);
 
     const homePage = new HomePage(this.driver, order);
     await homePage.loadProperties();
     await homePage.openPage();
-    await homePage.clickYourOrder(); // сделать это
-    await homePage.fillData(); // сделать это
-    const orderCheckError = await homePage.isOrderCheckError();
+    await homePage.clickYourOrder();
+    await homePage.fillData();
 
+    const orderCheckError = await homePage.isOrderCheckError();
     expect(orderCheckError).to.be.true;
   }).timeout(TEST_TIMEOUT);
 

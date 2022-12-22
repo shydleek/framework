@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-cart": "mocha tests/cart.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000 --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-results.xml",
-    "test-orderCheck": "mocha tests/orderCheck.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000 --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-results.xml",
-    "test-promocode": "mocha tests/promocode.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000 --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-results.xml",
+    "test-cart": "mocha tests/cart.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000 --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-cart.xml",
+    "test-orderCheck": "mocha tests/orderCheck.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000 --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-orderCheck.xml",
+    "test-promocode": "mocha tests/promocode.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000 --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-promocode.xml",
+    "test-user": "mocha tests/user.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000 --reporter mocha-junit-reporter --reporter-options mochaFile=reports/test-user.xml",
     "remote-test": "mocha tests/cart.spec.js --BROWSER_NAME='chrome' --RUNNER='remote' --timeout 120000"
   },
   "author": "",

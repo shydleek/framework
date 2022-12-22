@@ -28,8 +28,8 @@ describe("Checking not existing promocode.", function () {
     await homePage.openPage();
     await homePage.clickToCart();
     await homePage.fillPromocode();
+    
     const promocodeError = await homePage.isPromocodeError();
-
     expect(promocodeError).to.be.true;
   }).timeout(TEST_TIMEOUT);
 
