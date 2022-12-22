@@ -12,12 +12,14 @@ class Page {
   }
 
   async changeLanguage(language) {
-    if (language === LANGUAGE) {
+    const element = await this.findByXpath(Page.languageXpath);
+    await this.waitingLoad();
+    const lang = await element.getText();
+    
+    if (lang !== LANGUAGE) {
       logger.info(`Changing default language.`);
 
-
       await this.waitingLoad();
-      const element = await this.findByXpath(Page.languageXpath);
       await element.click();
       
       const select = await this.findByXpath(`//*[contains(text(), '${language}')]`);

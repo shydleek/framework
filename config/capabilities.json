@@ -1,5 +1,5 @@
 {
-    "bstackURL": "http://shydleek_yn1dZk:ybBxNTmqtuALDLDJTbFk@hub-cloud.browserstack.com/wd/hub",
+    "bstackURL": "http://bsuser_ynGIr4:yYskRxUbT3juvtsPp6F5@hub-cloud.browserstack.com/wd/hub",
     "bstack:options" : {
         "os": "Windows",
         "osVersion": "11",

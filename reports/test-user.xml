@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="125.131" tests="3" failures="0">
-  <testsuite name="Root Suite" timestamp="2022-12-22T10:57:02" tests="0" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="126.744" tests="3" failures="2">
+  <testsuite name="Root Suite" timestamp="2022-12-22T11:34:22" tests="0" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="Editing and applying user personal data." timestamp="2022-12-22T10:57:02" tests="3" file="D:\framework\tests\user.spec.js" time="125.130" failures="0">
-    <testcase name="Editing and applying user personal data. Should apply change of personal data." time="33.366" classname="Should apply change of personal data.">
+  <testsuite name="Editing and applying user personal data." timestamp="2022-12-22T11:34:22" tests="3" file="D:\framework\tests\user.spec.js" time="126.743" failures="2">
+    <testcase name="Editing and applying user personal data. Should apply change of personal data." time="30.901" classname="Should apply change of personal data.">
     </testcase>
-    <testcase name="Editing and applying user personal data. Should get sign in error." time="16.957" classname="Should get sign in error.">
+    <testcase name="Editing and applying user personal data. Should get sign in error." time="60.014" classname="Should get sign in error.">
+      <failure message="Timeout of 60000ms exceeded. For async tests and hooks, ensure &quot;done()&quot; is called; if returning a Promise, ensure it resolves. (D:\framework\tests\user.spec.js)" type="Error"><![CDATA[Error: Timeout of 60000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves. (D:\framework\tests\user.spec.js)
+    at listOnTimeout (node:internal/timers:557:17)
+    at processTimers (node:internal/timers:500:7)]]></failure>
     </testcase>
-    <testcase name="Editing and applying user personal data. Should not apply change of personal data." time="49.866" classname="Should not apply change of personal data.">
+    <testcase name="Editing and applying user personal data. &quot;after each&quot; hook for &quot;Should get sign in error.&quot;" time="21.030" classname="&quot;after each&quot; hook for &quot;Should get sign in error.&quot;">
+      <failure message="Session not started or terminated" type="WebDriverError"><![CDATA[WebDriverError: Session not started or terminated
+    at Object.checkLegacyResponse (node_modules\selenium-webdriver\lib\error.js:558:15)
+    at parseHttpResponse (node_modules\selenium-webdriver\lib\http.js:579:13)
+    at Executor.execute (node_modules\selenium-webdriver\lib\http.js:515:28)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Object.execute (node_modules\selenium-webdriver\lib\webdriver.js:741:17)
+    at async Context.<anonymous> (tests\user.spec.js:77:21)]]></failure>
     </testcase>
   </testsuite>
 </testsuites>

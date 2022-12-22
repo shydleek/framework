@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="46.355" tests="2" failures="0">
-  <testsuite name="Root Suite" timestamp="2022-12-22T10:47:55" tests="0" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="43.097" tests="2" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-12-22T11:39:48" tests="0" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="Adding and deleting items from cart." timestamp="2022-12-22T10:47:55" tests="2" file="D:\framework\tests\cart.spec.js" time="46.354" failures="0">
-    <testcase name="Adding and deleting items from cart. Should add exact product to the cart." time="11.096" classname="Should add exact product to the cart.">
+  <testsuite name="Adding and deleting items from cart." timestamp="2022-12-22T11:39:48" tests="2" file="D:\framework\tests\cart.spec.js" time="43.096" failures="0">
+    <testcase name="Adding and deleting items from cart. Should add exact product to the cart." time="11.341" classname="Should add exact product to the cart.">
     </testcase>
-    <testcase name="Adding and deleting items from cart. Should delete item from the cart." time="16.782" classname="Should delete item from the cart.">
+    <testcase name="Adding and deleting items from cart. Should delete item from the cart." time="15.626" classname="Should delete item from the cart.">
     </testcase>
   </testsuite>
 </testsuites>
